@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 1f9d78c042d84d146803e4dbd68d0800
+timeCreated: 1499974705
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 300
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Augusta
+  fontNames:
+  - Augusta
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b8c9e338587746d4392fb9ec35619772, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

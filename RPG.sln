@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rpg", "rpg.csproj", "{CCEE2BD0-5154-4A29-0C82-C7A602865E8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rpg.Editor", "rpg.Editor.csproj", "{B08EC6A4-88B1-F69A-4B48-1987D36A1A11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCEE2BD0-5154-4A29-0C82-C7A602865E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCEE2BD0-5154-4A29-0C82-C7A602865E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCEE2BD0-5154-4A29-0C82-C7A602865E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCEE2BD0-5154-4A29-0C82-C7A602865E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B08EC6A4-88B1-F69A-4B48-1987D36A1A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B08EC6A4-88B1-F69A-4B48-1987D36A1A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B08EC6A4-88B1-F69A-4B48-1987D36A1A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B08EC6A4-88B1-F69A-4B48-1987D36A1A11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

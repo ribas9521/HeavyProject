@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Player
+  - Tower
+  - Monster
+  - Crystal
+  - LargeTile
+  - LevelChanger
+  - Ground
+  - Area
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - Invisible
+  - Trail
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 141835457
+    locked: 0
+  - name: TowerFront
+    uniqueID: 1270888615
+    locked: 0
+  - name: Monster
+    uniqueID: 898395347
+    locked: 0
+  - name: Characters
+    uniqueID: 1008630139
+    locked: 0
+  - name: TowerBack
+    uniqueID: 2444420249
+    locked: 0
+  - name: FX
+    uniqueID: 4069998099
+    locked: 0
+  - name: Injured
+    uniqueID: 22605957
+    locked: 0
+  - name: Trail
+    uniqueID: 2787119075
+    locked: 0
