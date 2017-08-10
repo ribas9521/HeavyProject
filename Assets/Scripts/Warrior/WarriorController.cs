@@ -27,12 +27,12 @@ public class WarriorController : MonoBehaviour {
        
         if (cannon.transform.localPosition.x == 0.7f)
         {            
-            Instantiate(powerWave, cannon.transform.position, Quaternion.identity);
+            Instantiate(powerWave, cannon.transform.position, Quaternion.Euler(0f, 0, -90f));
         }
         else if (cannon.transform.localPosition.x == -0.7f)
         {
            
-            Instantiate(powerWave, cannon.transform.position, Quaternion.Euler(0f, 180f, 0f));
+            Instantiate(powerWave, cannon.transform.position, Quaternion.Euler(0f, 0f, 90f));
         }
       
     }

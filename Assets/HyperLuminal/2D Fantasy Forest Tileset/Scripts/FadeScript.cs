@@ -33,7 +33,20 @@ public class FadeScript : MonoBehaviour
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		FadeType = FADETYPE.IN;
 		AlphaValue = 1.0f;
+        setPosition();
 	}
+
+    public void setPosition()
+    {
+        if(name == "FadePanel")
+        {
+            transform.localPosition = new Vector3(-20.33f, -12.10788f, 0);
+        }
+        if(name == "Radius")
+        {
+            transform.localPosition = new Vector3(-4804603f, -0, 0);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -41,7 +54,7 @@ public class FadeScript : MonoBehaviour
 		// fade in or fade out based on the objects state
 		if(FadeType == FADETYPE.IN)
 		{
-			AlphaValue -= 0.25f * Time.deltaTime;
+			AlphaValue -= 0.50f * Time.deltaTime;
 			// limit the possible alpha value
 			if(AlphaValue < 0.0f)
 			{
@@ -69,7 +82,7 @@ public class FadeScript : MonoBehaviour
 			{
 				AlphaValue = 1.0f;
 				FadeType = FADETYPE.IN;
-				GameObject.Find("PlayerCharacter").GetComponent<PlayerMovement>().RespawnPlayerAtCheckpoint();
+				//GameObject.Find("PlayerCharacter").GetComponent<PlayerMovement>().RespawnPlayerAtCheckpoint();
 			}
 		}
 

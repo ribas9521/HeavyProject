@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EarthProjectileController : MonoBehaviour {
-    EarthTowerController ec;
+  
     ArrowController ac;
 	// Use this for initialization
 	void Awake () {

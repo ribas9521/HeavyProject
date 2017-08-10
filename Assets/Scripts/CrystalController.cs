@@ -12,10 +12,11 @@ public class CrystalController : MonoBehaviour
     GameController gameController;
     // Use this for initialization
     void Start()
-    {
-        healthBar = Instantiate(slider) as GameObject;
+    {        
+        
         status = GetComponent<StatusController>();
-        gameController = GameObject.Find("GameMananger").GetComponent<GameController>();
+        gameController = GameObject.Find("GameMananger").GetComponent<GameController>();      
+        
         
     }
 
@@ -27,12 +28,9 @@ public class CrystalController : MonoBehaviour
     }
     void SliderControl()
     {
-        healthBar.transform.SetParent(GameObject.Find("Canvas").transform);
-        healthBar.GetComponent<Slider>().maxValue = status.maxHPoints;
-        healthBar.GetComponent<Slider>().value = status.hPoints;
-        Vector3 wantedPos = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 newPos = new Vector3(wantedPos.x + 5, wantedPos.y + 35f, wantedPos.z);
-        healthBar.transform.position = newPos;
+      GameObject.Find("Canvas").transform.Find("LevelInfo")
+            .transform.Find("Content").Find("DefeatAttempts")
+            .Find("Attempts").GetComponent<Text>().text = status.hPoints.ToString();
     }
 
     void TakeDamage()
@@ -56,6 +54,12 @@ public class CrystalController : MonoBehaviour
     {
         if(status.hPoints <= 0)
         gameController.GameOver();
+    }
+    public void startCrystal(int hp)
+    {
+        status.maxHPoints = hp;
+        status.hPoints = status.maxHPoints;
+
     }
 
 }

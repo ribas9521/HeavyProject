@@ -48,7 +48,7 @@ public class MenuController : MonoBehaviour {
 
     public void startGame()
     {
-        print("start");
+
         buyTurn = false;
         spawners.SetActive(true);
         gc.pseudoAwake();
@@ -61,8 +61,7 @@ public class MenuController : MonoBehaviour {
     public void backToStart()
     {
         gc.buildScene();        
-        buyTurn = true;
-       
+        buyTurn = true;       
         areaGo.SetActive(true);
         buyTurnText.SetActive(true);
         btc.getTowers();

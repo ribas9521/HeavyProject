@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunFx: {fileID: 1690198455025402, guid: c20ffcd5bfda14b4b8ce6dd6ecd46caa, type: 2}
   stunDuration: 3
-  stunChance: 10
+  stunChance: 50
 --- !u!114 &114380365751680428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,3 +206,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0

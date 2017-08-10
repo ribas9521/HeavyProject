@@ -9,9 +9,10 @@ public class GameController : MonoBehaviour {
     GameObject spawners;
     TouchController touchController;
     Canvas canvas;
-    Text text;
+    Text goldText;
     Text victoryGold;
     Text goldResult;
+    Text crystalLife;
     public int gold;
     public int gems;
     StatusController crystalStatus;
@@ -24,20 +25,35 @@ public class GameController : MonoBehaviour {
     public GameObject CrystalPrefab;
     GameObject skill;
     public int level;
-    
-    
+    SpriteRenderer fadePanel;
+    GameObject levelInfo;
+    Text charName;
     
 
     void Awake () {
-        canvas = GameObject.FindObjectOfType<Canvas>();
-        text = canvas.transform.Find("Gold").GetComponent<Text>();
+        canvas = GameObject.FindObjectOfType<Canvas>();        
         spawners = GameObject.Find("Spawners");        
         skill = GameObject.Find("Skill");
         crystal = GameObject.Find("Crystal");
         crystalStatus = crystal.GetComponent<StatusController>();
         touchController = GetComponent<TouchController>();
         level = 1;
+        fadePanel = GameObject.FindGameObjectWithTag("Player").transform.Find("FadePanel").GetComponent<SpriteRenderer>();
+        levelInfo = canvas.transform.Find("LevelInfo").gameObject;
+        goldText = levelInfo.transform.Find("Content").Find("GoldInfo").Find("GoldAmount").GetComponent<Text>();
+        crystalLife = levelInfo.transform.Find("Content").Find("DefeatAttempts").Find("Attempts").GetComponent<Text>();
+        charName = levelInfo.transform.Find("Content").Find("Name").Find("NameText").GetComponent<Text>();
+        charName.text = PlayerPrefs.GetString("CharName");
 
+
+    }
+    public void respawnFade()
+    {
+        FadeScript[] fs = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<FadeScript>();
+        foreach(FadeScript f in fs)
+        {
+            f.RespawnFade();
+        }
     }
 
     public void pseudoAwake()
@@ -50,10 +66,11 @@ public class GameController : MonoBehaviour {
         gameOver = false;
     }
 
-
+    
    
 	// Update is called once per frame
 	void Update () {
+       
         if (startGame == true)
         {
             LastHit();
@@ -86,20 +103,19 @@ public class GameController : MonoBehaviour {
     public void UpdateScore(int amount)
     {
         
-        if (text != null)
+        if (goldText != null)
         {
             gold += amount;
-            text.text = "Gold: " + gold.ToString();
+            goldText.text = gold.ToString();
             
         }
     }
     public void setGold(int amount)
     {
-        if (text != null)
+        if (goldText != null)
         {
             gold = amount;
-            text.text = "Gold: " + gold.ToString();
-
+            goldText.text = gold.ToString();
         }
 
     }
@@ -137,22 +153,24 @@ public class GameController : MonoBehaviour {
         Destroy(crystal);
         spawners.SetActive(false);
         canvas.transform.Find("Skill").gameObject.SetActive(false);
-        text.text = "";
-        skill.SetActive(false);
+        levelInfo.SetActive(false);
+        skill.SetActive(false);        
 
     }
 
     public void buildScene()
-    {        
+    {
+          
         canvas.transform.Find("VictoryScreen2").gameObject.SetActive(false);
         crystal = Instantiate(CrystalPrefab, new Vector2(-6.41f, 0.192f), Quaternion.identity);
         crystalStatus = crystal.GetComponent<StatusController>();
         crystalStatus.hPoints = crystalStatus.maxHPoints;
         crystal.name = "Crystal";
-        text.text = "Gold: " + gold;
+        levelInfo.SetActive(true);
         skill.SetActive(true);
-        reactiveSpawners();        
-        
+        reactiveSpawners();
+        respawnFade();
+
     }
     public void gemCalc(float maxLife, float cLife)
     {           
@@ -242,6 +260,6 @@ public class GameController : MonoBehaviour {
     {
         victoryGold = canvas.transform.Find("VictoryScreen2").transform
             .Find("VictoryGold").GetComponent<Text>();
-        victoryGold.text = gold + "  X ";
+        victoryGold.text = gold + " X ";
     }
 }

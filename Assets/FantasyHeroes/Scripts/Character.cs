@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Globalization;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.FantasyHeroes.Scripts
 {
@@ -48,7 +49,7 @@ namespace Assets.FantasyHeroes.Scripts
         public WeaponType WeaponType;
         SpriteCollection sp;
         CharacterEditor ce;
-
+        Text charName;
 
         private void Start()
         {
@@ -57,7 +58,7 @@ namespace Assets.FantasyHeroes.Scripts
             {
                 sp = GameObject.Find("SpriteCollection").GetComponent<SpriteCollection>();
                 ce = GameObject.Find("CharacterEditor").GetComponent<CharacterEditor>();
-                sp.Refresh();
+                //sp.Refresh();
                 deleteChar();
             }
             else
@@ -76,8 +77,16 @@ namespace Assets.FantasyHeroes.Scripts
             saveEyes();
             saveMouth();
             saveBeard();
+            saveName();
             SceneManager.LoadScene("Scene1");
 
+        }
+        public void saveName()
+        {
+            charName = GameObject.FindObjectOfType<Canvas>()
+                .transform.Find("Character")
+                .Find("NameContainer").Find("Name").Find("Text").GetComponent<Text>();
+            PlayerPrefs.SetString("CharName", charName.text.ToString());
         }
         public void getCharacter()
         {
@@ -92,7 +101,7 @@ namespace Assets.FantasyHeroes.Scripts
             }
             else
             {
-                sp.Refresh();
+               // sp.Refresh();
                 getHead();
                 getEars();
                 getHair();

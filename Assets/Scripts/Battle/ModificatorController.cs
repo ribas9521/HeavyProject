@@ -50,17 +50,19 @@ public class ModificatorController : MonoBehaviour {
             GameObject stunFx = Instantiate(prefab, monster.transform.position, Quaternion.identity);
             stunFx.transform.SetParent(monster.transform.Find("FX"));
             stunFx.transform.localPosition = new Vector3(0, 1.3f, 0);
-            stunFx.name = "slowPrefab";
-            StartCoroutine(takeStun(monster, duration, monster.GetComponent<MonsterMovement>()));
+            stunFx.name = "stunFX";
             if (stunFx != null)
                 Destroy(stunFx, duration);
+            StartCoroutine(takeStun(monster, duration, monster.GetComponent<MonsterMovement>()));
+            
         }
     }
+    
     IEnumerator takeStun(GameObject monster, float duration, MonsterMovement mv)
     {
         float inicialMv = mv.moveSpeed;
         mv.moveSpeed = 0;
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSecondsRealtime(duration);      
         mv.moveSpeed = inicialMv;
     }
     public void slow(GameObject monster, GameObject prefab, float duration, float slowPercentage, float slowChance, DamageController dc)

@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour {
     public List<GameObject> spawnables;
     MonsterSpawner spawnerNorth; 
     MonsterSpawner spawnerSouth;
+    CrystalController cc;
 	// Use this for initialization
 	void Awake () {
        
@@ -18,6 +19,7 @@ public class LevelController : MonoBehaviour {
     {
         spawnerNorth = GameObject.Find("Spawner-North").GetComponent<MonsterSpawner>();
         spawnerSouth = GameObject.Find("Spawner-South").GetComponent<MonsterSpawner>();
+        cc = GameObject.FindGameObjectWithTag("Crystal").GetComponent<CrystalController>();
         switch (level)
         {
             case 1:
@@ -57,6 +59,7 @@ public class LevelController : MonoBehaviour {
         List<GameObject> monsters = new List<GameObject> { spawnables[0] };
         spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
         spawnerSouth.pseudoAwake(monsters, timerSouth, quantSouth);
+        cc.startCrystal(2);
     }
     public void lv2()
     {
@@ -67,56 +70,84 @@ public class LevelController : MonoBehaviour {
         List<GameObject> monsters = new List<GameObject> { spawnables[1] };
         spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
         spawnerSouth.pseudoAwake(monsters, timerSouth, quantSouth);
+        cc.startCrystal(5);
     }
     public void lv3()
     {
-        quantNorth = 5;
-        quantSouth = 5;
-        timerNorth = 4;
-        timerSouth = 3.8f;
+        quantNorth = 6;
+        quantSouth = 6;
+        timerNorth = 3.5f;
+        timerSouth = 3.5f;
         List<GameObject> monsters = new List<GameObject> { spawnables[0] };
         List<GameObject> monsters2 = new List<GameObject> { spawnables[1] };
         spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
         spawnerSouth.pseudoAwake(monsters2, timerSouth, quantSouth);
+        cc.startCrystal(5);
     }
     public void lv4()
     {
-        quantNorth = 6;
-        quantSouth = 5;
-        timerNorth = 4;
-        timerSouth = 3.6f;
+        quantNorth = 7;
+        quantSouth = 6;
+        timerNorth = 3f;
+        timerSouth = 3f;
         List<GameObject> monsters = new List<GameObject> { spawnables[0], spawnables[1] };
         spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
         spawnerSouth.pseudoAwake(monsters, timerSouth, quantSouth);
+        cc.startCrystal(5);
     }
     public void lv5()
     {
-        quantNorth = 10;
-        quantSouth = 10;
-        timerNorth = 3;
-        timerSouth = 4f;
+        quantNorth = 15;
+        quantSouth = 12;
+        timerNorth = 2.3f;
+        timerSouth = 2.5f;
         List<GameObject> monsters = new List<GameObject> { spawnables[0], spawnables[1] };
         spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
         spawnerSouth.pseudoAwake(monsters, timerSouth, quantSouth);
+        cc.startCrystal(5);
     }
     public void lv6()
     {
-        quantNorth = 12;
-        quantSouth = 12;
-        timerNorth = 3;
-        timerSouth = 4f;
+        quantNorth = 25;
+        quantSouth = 20;
+        timerNorth = 2;
+        timerSouth = 2f;
         List<GameObject> monsters = new List<GameObject> { spawnables[0], spawnables[1], spawnables[0] };
         spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
         spawnerSouth.pseudoAwake(monsters, timerSouth, quantSouth);
+        cc.startCrystal(5);
     }
     public void lv7()
     {
-        quantNorth = 15;
-        quantSouth = 15;
-        timerNorth = 3;
-        timerSouth = 3f;
+        quantNorth = 35;
+        quantSouth = 40;
+        timerNorth = 1.8f;
+        timerSouth = 2.0f;
         List<GameObject> monsters = new List<GameObject> { spawnables[0], spawnables[1], spawnables[0] };
         spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
         spawnerSouth.pseudoAwake(monsters, timerSouth, quantSouth);
+        cc.startCrystal(7);
+    }
+    public void lv8()
+    {
+        quantNorth = 55;
+        quantSouth = 42;
+        timerNorth = 1f;
+        timerSouth = 1.3f;
+        List<GameObject> monsters = new List<GameObject> { spawnables[0], spawnables[1], spawnables[0], spawnables[1] };
+        spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
+        spawnerSouth.pseudoAwake(monsters, timerSouth, quantSouth);
+        cc.startCrystal(7);
+    }
+    public void lv9()
+    {
+        quantNorth = 80;
+        quantSouth = 70;
+        timerNorth = .8f;
+        timerSouth = 1f;
+        List<GameObject> monsters = new List<GameObject> { spawnables[0], spawnables[1], spawnables[0], spawnables[1], spawnables[0] };
+        spawnerNorth.pseudoAwake(monsters, timerNorth, quantNorth);
+        spawnerSouth.pseudoAwake(monsters, timerSouth, quantSouth);
+        cc.startCrystal(7);
     }
 }

@@ -149,6 +149,8 @@
     <Compile Include="Assets\Scripts\Tower\WaterProjectileController.cs" />
     <Compile Include="Assets\Scripts\Tower\WaterTowerController.cs" />
     <Compile Include="Assets\Scripts\Tower\WindTowerController.cs" />
+    <Compile Include="Assets\Scripts\Warrior\FusdahoController.cs" />
+    <Compile Include="Assets\Scripts\Warrior\FusdahoTrigger.cs" />
     <Compile Include="Assets\Scripts\Warrior\PowerWaveController.cs" />
     <Compile Include="Assets\Scripts\Warrior\WarriorController.cs" />
   </ItemGroup>
