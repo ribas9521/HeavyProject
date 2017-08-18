@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour {
     SpriteRenderer fadePanel;
     GameObject levelInfo;
     Text charName;
+    PlayerStatus ps;
     
 
     void Awake () {
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour {
         crystalLife = levelInfo.transform.Find("Content").Find("DefeatAttempts").Find("Attempts").GetComponent<Text>();
         charName = levelInfo.transform.Find("Content").Find("Name").Find("NameText").GetComponent<Text>();
         charName.text = PlayerPrefs.GetString("CharName");
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
 
 
     }
@@ -235,6 +237,8 @@ public class GameController : MonoBehaviour {
             setGems(gems, "VictoryScreen");            
             victory = true;
             level++;
+            ps.updatePoints(1);
+            
         }
     }
     public void NextVictoryScreen()

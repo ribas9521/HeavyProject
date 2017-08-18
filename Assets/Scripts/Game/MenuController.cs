@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour {
     public GameObject fireTower, waterTower, windTower, earthTower;
@@ -13,7 +14,9 @@ public class MenuController : MonoBehaviour {
     GameController gc;
     GameObject spawners;
     GameObject areaGo;
-    GameObject buyTurnText;  
+    GameObject buyTurnText;
+    GameObject mainInfo;
+    GameObject otherInfo;
     
     
     
@@ -23,7 +26,13 @@ public class MenuController : MonoBehaviour {
     LevelController lc;
 
     BuyTowerController btc;
-    
+    bool pause;
+    GameObject playButton, pauseButton;
+    bool status = false;
+    GameObject statusGo;
+    public Sprite activeImage, InactiveImage;
+    PlayerStatus ps;
+
 
     // Use this for initialization
     void Awake () {
@@ -34,17 +43,62 @@ public class MenuController : MonoBehaviour {
         items = GameObject.Find("GameMananger").GetComponent<ItemsModel>();        
         gc.UpdateScore(inicialGold);
         buyTurnText = GameObject.Find("BuyTurn");
-        
+        mainInfo = GameObject.Find("Canvas").transform.Find("LevelInfo").gameObject;
+        otherInfo = GameObject.Find("Canvas").transform.Find("OtherInfo").gameObject;
         lc = GetComponent<LevelController>();
         btc = GetComponent<BuyTowerController>();
+        pause = false;
+        pauseButton = otherInfo.transform.Find("Content").Find("Pause").Find("PauseContent").gameObject;
+        playButton = otherInfo.transform.Find("Content").Find("Pause").Find("Play").gameObject;
+        statusGo = GameObject.Find("Canvas").transform.Find("Status").gameObject;
+        statusGo.SetActive(false);
+        playButton.SetActive(false);
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
 
     }
-	
-	// Update is called once per frame
-	
-    
-   
-    
+
+    // Update is called once per frame
+
+    public void toggleStatus()
+    {
+        status = !status;
+        if (status)
+        {
+            statusGo.SetActive(true);
+        }
+        else
+        {
+            statusGo.SetActive(false);
+        }
+
+    }
+    private void Update()
+    {
+        if(ps.points > 0)
+        {
+            mainInfo.GetComponentInChildren<Image>().sprite = activeImage;
+        }
+        else
+            mainInfo.GetComponentInChildren<Image>().sprite = InactiveImage;
+    }
+
+    public void pauseGame()
+    {
+        pause = !pause;
+        if (pause)
+        {
+            playButton.SetActive(true);
+            pauseButton.SetActive(false);
+            Time.timeScale = 0.0f;
+            
+        }
+        else
+        {
+            playButton.SetActive(false);
+            pauseButton.SetActive(true);
+            Time.timeScale = 1.0f;
+        }
+    }
 
     public void startGame()
     {

@@ -13,7 +13,9 @@ public class CameraController : MonoBehaviour {
     private void Awake()
     {
         cam = GetComponent<Camera>();
-       
+        if (Display.displays.Length > 1)
+            Display.displays[1].Activate();
+
     }
     private void Start()
     {

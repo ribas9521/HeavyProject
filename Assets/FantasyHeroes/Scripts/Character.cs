@@ -86,7 +86,11 @@ namespace Assets.FantasyHeroes.Scripts
             charName = GameObject.FindObjectOfType<Canvas>()
                 .transform.Find("Character")
                 .Find("NameContainer").Find("Name").Find("Text").GetComponent<Text>();
-            PlayerPrefs.SetString("CharName", charName.text.ToString());
+            if(charName.text != "")
+                PlayerPrefs.SetString("CharName", charName.text.ToString());
+            else
+                PlayerPrefs.SetString("CharName", "Davohkiin");
+
         }
         public void getCharacter()
         {

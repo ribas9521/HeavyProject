@@ -18,7 +18,7 @@ c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.T
 99b584b206d1fe0d0f2602709173d623 Assembly-CSharp.dll:Assets.FantasyHeroes.Scripts.LayerManager
 100088cd98dd737b00894cdf9932fce8 Assembly-CSharp.dll:.Door
 c668c352ba4b61518062ad3f5ca953bd Assembly-CSharp.dll:.TowerController
-5305e420833157735dc7714bc14e7782 Assembly-CSharp.dll:.MenuController
+f8a08d6e696340050c716f1e98a6e685 Assembly-CSharp.dll:.MenuController
 fe11b58b480e706daba394f17dc8b140 Assembly-CSharp.dll:.Trigger
 cf2833bd28914a34e8da53d17f1b33f9 Assembly-CSharp.dll:Assets.FantasyHeroes.Scripts.AnimationManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ModificatorController
@@ -120,7 +120,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 b81f89e40fee41b203a5123545d36f79 Assembly-CSharp.dll:.FadeScript
-01591c32308963293d7cf746e19cbd18 Assembly-CSharp.dll:.StatusController
+95f4850bc2ebed50c682e39113bf31aa Assembly-CSharp.dll:.StatusController
 2d033f0b0af6bdbb33e41237cad2a793 Assembly-CSharp.dll:.PowerWaveController
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
@@ -140,6 +140,7 @@ e085e3c0d9dbac335591a4068e3fcf19 Assembly-CSharp.dll:Assets.FantasyHeroes.Script
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Tile
 f0a273e23073cfb1b57bb1696f7702f0 Assembly-CSharp.dll:.FireTowerController
 b10fe850ade32e45bfe6a870f792e45a Assembly-CSharp.dll:.FusdahoController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.StatusShow
 b168b197b63e3eafd8f57f190b4e0535 Assembly-CSharp.dll:.Pathfinding
 32e8fe00b63ed946490b898f6024a2f2 Facebook.Unity.Settings.dll:Facebook.Unity.Settings.FacebookSettings
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Assets.FantasyHeroes.Scripts.Palette
@@ -175,6 +176,7 @@ dc7c79d279c7db671b5343c1c88ec717 Assembly-CSharp.dll:.SpriteOutline
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.EarthProjectileController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CameraController
 9c1b1d042d927fb799af7116a4265902 Assembly-CSharp.dll:.ArrowController
+af1cd7f555e289c976894ed072585d34 Assembly-CSharp.dll:.PlayerStatus
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TrailController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PlayerMovement
 71ffc470cbd4c5d01446bc6955c0d760 Assembly-CSharp.dll:.WarriorController

@@ -30,9 +30,17 @@ public class StatusController : MonoBehaviour
     [Range(0.0f, 100.0f)]
     public float reward;
 
+    public float str;
+    public float agi;
+    public float inte;
+    public float dex;
+    public int points;
+
     private void Awake()
     {
         maxHPoints = hPoints;
+      
     }
+   
 
 }

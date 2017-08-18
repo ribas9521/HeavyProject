@@ -10,7 +10,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: RibasStudios
+  companyName: MicrobiosStudios
   productName: Candy Souls
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -51,7 +51,7 @@ PlayerSettings:
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   m_MTRendering: 1
-  m_MobileMTRendering: 0
+  m_MobileMTRendering: 1
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
@@ -143,7 +143,7 @@ PlayerSettings:
   targetPixelDensity: 0
   resolutionScalingMode: 0
   applicationIdentifier:
-    Android: com.RibasStudios.RPG
+    Android: com.MicrobiosStudios.CandySouls
     Standalone: unity.RibasStudios.Candy Souls
     Tizen: com.RibasStudios.RPG
     iOS: com.RibasStudios.RPG
@@ -224,8 +224,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/guilh/OneDrive/Documentos/CandySouls/key.keystore
+  AndroidKeyaliasName: microbio
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
