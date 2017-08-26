@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour {
     GameObject levelInfo;
     Text charName;
     PlayerStatus ps;
+    public GameObject candyParticles;
     
 
     void Awake () {
@@ -190,6 +191,11 @@ public class GameController : MonoBehaviour {
             gems = 1;
         }
         
+    }
+    public void monsterDeath(GameObject monster)
+    {
+        var candy = Instantiate(candyParticles, monster.transform.position, Quaternion.identity);
+        Destroy(candy, 1);
     }
     public void setGems(int gems, string screen)
     {

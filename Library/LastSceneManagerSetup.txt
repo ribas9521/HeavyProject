@@ -2,3 +2,9 @@ sceneSetups:
 - path: Assets/_Scenes/Scene1.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/_Scenes/PreGame.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/_Scenes/CharacterEditor.unity
+  isLoaded: 0
+  isActive: 0

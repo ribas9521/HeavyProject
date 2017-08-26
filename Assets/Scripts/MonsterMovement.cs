@@ -12,7 +12,7 @@ public class MonsterMovement : MonoBehaviour {
     StatusController status;
     public GameObject slider;
     GameObject healthBar;
-    //ParticleSystem particles;
+   
     public bool isTouched;
     bool wasKilled;
     public bool isStunned = false;
@@ -20,6 +20,7 @@ public class MonsterMovement : MonoBehaviour {
     ColorController colorController;
     GameController gameController;
     public float offsetX, offSetY;
+   
     
 
     void Awake () {
@@ -27,7 +28,7 @@ public class MonsterMovement : MonoBehaviour {
         status = GetComponent<StatusController>();
         healthBar = Instantiate(slider) as GameObject;
         colorController = GetComponent<ColorController>();
-        //particles = transform.FindChild("DeathParticles").GetComponent<ParticleSystem>();
+        
         isTouched = false;
         wasKilled = true;
         halfMoveSpeed = moveSpeed / 2;
@@ -91,7 +92,7 @@ public class MonsterMovement : MonoBehaviour {
         
         Die();
         SliderControl();
-        //particles.Play();
+        
     }
 
     void SliderControl()
@@ -161,7 +162,8 @@ public class MonsterMovement : MonoBehaviour {
             }
         }
         if (status.hPoints <= 0 )
-        {            
+        {        
+          
             Destroy(gameObject);           
         }       
         
@@ -175,8 +177,12 @@ public class MonsterMovement : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+   
+    
     void OnDestroy()
     {
+        gameController.monsterDeath(gameObject);
         if(wasKilled)
         gameController.UpdateScore((int)status.reward);     
         Destroy(healthBar);

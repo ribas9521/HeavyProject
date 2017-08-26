@@ -32,6 +32,9 @@ public class MenuController : MonoBehaviour {
     GameObject statusGo;
     public Sprite activeImage, InactiveImage;
     PlayerStatus ps;
+    private bool walkingMode;
+    Text walkingModeText;
+    MovementController mc;
 
 
     // Use this for initialization
@@ -48,12 +51,15 @@ public class MenuController : MonoBehaviour {
         lc = GetComponent<LevelController>();
         btc = GetComponent<BuyTowerController>();
         pause = false;
-        pauseButton = otherInfo.transform.Find("Content").Find("Pause").Find("PauseContent").gameObject;
+        pauseButton = otherInfo.transform.Find("Content").Find("Pause").Find("Pause").gameObject;
         playButton = otherInfo.transform.Find("Content").Find("Pause").Find("Play").gameObject;
         statusGo = GameObject.Find("Canvas").transform.Find("Status").gameObject;
         statusGo.SetActive(false);
         playButton.SetActive(false);
         ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
+        walkingMode = false;
+        walkingModeText = otherInfo.transform.Find("Content").Find("Mode").GetComponent<Text>();
+        mc = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementController>();
 
     }
 
@@ -81,6 +87,21 @@ public class MenuController : MonoBehaviour {
         else
             mainInfo.GetComponentInChildren<Image>().sprite = InactiveImage;
     }
+    public void toggleMode()
+    {
+        walkingMode = !walkingMode;
+        if (walkingMode)
+        {
+            walkingModeText.text = "Auto";
+            mc.setMode("a");
+            
+        }
+        else
+        {
+            walkingModeText.text = "Manu";
+            mc.setMode("m");
+        }
+    }
 
     public void pauseGame()
     {
@@ -102,13 +123,11 @@ public class MenuController : MonoBehaviour {
 
     public void startGame()
     {
-
         buyTurn = false;
         spawners.SetActive(true);
         gc.pseudoAwake();
         buyTurnText.SetActive(false);
-        areaGo.SetActive(false);
-        
+        areaGo.SetActive(false);        
         lc.startLevel(gc.level);
         
     }

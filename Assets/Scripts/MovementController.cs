@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using CnControls;
 
 public class MovementController : MonoBehaviour
 {
@@ -10,51 +11,98 @@ public class MovementController : MonoBehaviour
     public float viewRange;
     float attackTimer;
     GameObject cannon;
-    
-
-
     public GameObject nearEnemie = null;
-    float h;
-    float v;    
+    int h;
+
     Pathfinding pathfinding;
     DamageController damageController;
     StatusController status;
-  
     TouchController touchController;
 
-    
-
-
     float oldX, oldY;
-    
+
+    Vector3 lastPosition = Vector3.zero;
+
+    string walkingMode;
 
 
- 
     void Awake()
-    {        
+    {
+        walkingMode = getMode();
         oldX = (float)System.Math.Round(transform.position.x, 0);
         oldY = (float)System.Math.Round(transform.position.y, 0);
         anim = transform.Find("Dummy").transform.Find("Animation").GetComponent<Animator>();
         pathfinding = GetComponent<Pathfinding>();
         damageController = GetComponent<DamageController>();
         status = GetComponent<StatusController>();
-     
+
         touchController = GetComponent<TouchController>();
         cannon = transform.Find("Cannon").gameObject;
+
     }
-   
+    private void FixedUpdate()
+    {
+        MoveDetection();
+        ClampPosition();
+        placeCannon();
+        if (walkingMode.Equals("m"))
+        {
+            padMovement();
+            padAttack();
+        }
+        else
+        {
+            manualWalking();
+            automaticMovement();
+            Attack(nearEnemie);
+            Return();
+        }
+
+
+
+    }
 
     // Update is called once per frame
     void Update()
-    {      
-        attackTimer += Time.deltaTime;        
-        MoveDetection();
-        manualWalking();
-        ClampPosition();
-        Return();
-        placeCannon();
-        automaticMovement();        
+    {
+        attackTimer += Time.deltaTime;
 
+    }
+
+    string getMode()
+    {
+        if (PlayerPrefs.GetString("walkingMode") == null)
+        {
+            return "m";
+        }
+        else
+            return PlayerPrefs.GetString("walkingMode");
+    }
+    public void setMode(string mode)
+    {
+        PlayerPrefs.SetString("walkingMode", mode);
+        walkingMode = getMode();
+    }
+
+    void padMovement()
+    {
+        Vector3 inputVector = new Vector3(CnInputManager.GetAxisRaw("Horizontal"), CnInputManager.GetAxisRaw("Vertical"));
+        transform.Translate(inputVector.normalized * moveSpeed * Time.deltaTime);
+        if (inputVector == Vector3.zero)
+        {
+            Animate(0);
+        }
+    }
+    void padAttack()
+    {
+        var pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+        var newPos = Camera.main.ScreenToWorldPoint(pos);
+        if (newPos.x > 0 && Input.GetButton("Fire1"))
+        {
+            nearEnemie = pathfinding.Find(attackRange + 1);
+            Attack(nearEnemie);
+            nearEnemie = null;
+        }
     }
 
     void automaticMovement()
@@ -73,13 +121,20 @@ public class MovementController : MonoBehaviour
 
         }
     }
-    
+
+    public float speed()
+    {
+        var speed = (((transform.position - lastPosition).magnitude) / Time.deltaTime);
+
+        lastPosition = transform.position;
+        return speed;
+    }
 
     float GetDistance(GameObject target)
     {
         return Vector3.Distance(transform.position, target.transform.position);
     }
-    
+
     void Return()
     {
         if (nearEnemie == null)
@@ -87,13 +142,13 @@ public class MovementController : MonoBehaviour
             if (transform.position == new Vector3(0f, 0f))
             {
                 h = 0;
-                v = 0;
+
             }
             else
             {
                 GoTo(new Vector3(0f, 0f));
             }
-        }  
+        }
     }
 
     void ClampPosition()
@@ -108,16 +163,15 @@ public class MovementController : MonoBehaviour
     {
         float curX;
         curX = (float)System.Math.Round(transform.position.x, 1);
-        
+
         if (curX != oldX)
         {
-            h = (float)System.Math.Round(oldX - curX, 1); 
-           
-        }        
-       
+            h = (int)(System.Math.Round(oldX - curX, 1) * 10);
+        }
+
         oldX = curX;
-             
         Animate(h);
+
 
     }
     void manualWalking()
@@ -132,10 +186,10 @@ public class MovementController : MonoBehaviour
                 {
                     nearEnemie = touched;
                 }
-                
+
             }
         }
-      
+
     }
 
     void GoTo(Transform target)
@@ -147,28 +201,25 @@ public class MovementController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
     }
 
-    void Animate(float h)
+    void Animate(int h)
     {
-        anim.SetFloat("h", h);
-       
-    }
-   
-    
+        anim.SetInteger("h", h);
 
+    }
     void Attack(GameObject nearEnemie)
-    {   
-       if(nearEnemie != null && GetDistance(nearEnemie) <= attackRange)      
-        if (attackTimer >= attackSpeed)
-        {
-            attackTimer = 0;
-            anim.SetTrigger("Attack");
+    {
+        if (nearEnemie != null && GetDistance(nearEnemie) <= attackRange)
+            if (attackTimer >= attackSpeed)
+            {
+                attackTimer = 0;
                 StartCoroutine(AttackRoutine(0.4f, nearEnemie));
-        }
-        
+            }
+
     }
 
     IEnumerator AttackRoutine(float time, GameObject enemie)
     {
+        anim.SetTrigger("Attack");
         yield return new WaitForSeconds(time);
         Harm(enemie);
     }
@@ -182,11 +233,11 @@ public class MovementController : MonoBehaviour
         else
         {
             cannon.transform.localPosition = new Vector3(-0.7f, 0.45f, 0);
-        }    
-             
+        }
+
 
     }
-    
+
 
     public void Harm(GameObject nearEnemie)
     {
@@ -197,11 +248,5 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
-    {
 
-        Attack(nearEnemie);
-
-    }
-    
 }

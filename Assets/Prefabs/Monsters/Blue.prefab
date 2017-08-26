@@ -180,8 +180,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1970723165147062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7556742, y: -0.75243187, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalPosition: {x: 2.03, y: 0.49125648, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 4889131905226886}
   - {fileID: 4902880766400908}
@@ -350,6 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: 0
   injured: 0
+  injuredColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114286436596953064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,6 +393,11 @@ MonoBehaviour:
   accuracy: 0
   blockChance: 0
   reward: 2
+  str: 0
+  agi: 0
+  inte: 0
+  dex: 0
+  points: 0
 --- !u!114 &114904444618438734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,6 +451,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212425786832696206
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -486,6 +493,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212504598322706542
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -527,6 +535,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
 --- !u!212 &212779657383834498
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -568,6 +577,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212845685184306624
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -609,6 +619,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212859078797978706
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -650,6 +661,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212990769194626328
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -691,3 +703,4 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
