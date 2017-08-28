@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.FantasyHeroes.Scripts
-{
+
     /// <summary>
     /// Palette used to change sprite color
     /// </summary>
@@ -20,4 +19,3 @@ namespace Assets.FantasyHeroes.Scripts
             }
         }
     }
-}

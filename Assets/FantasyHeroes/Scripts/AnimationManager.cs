@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.FantasyHeroes.Scripts
-{
+
     /// <summary>
     /// Play animation from character editor
     /// </summary>
@@ -89,4 +88,3 @@ namespace Assets.FantasyHeroes.Scripts
             }
         }
     }
-}

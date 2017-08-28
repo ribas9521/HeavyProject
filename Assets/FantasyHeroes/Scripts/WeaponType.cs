@@ -1,5 +1,4 @@
-﻿namespace Assets.FantasyHeroes.Scripts
-{
+﻿
     /// <summary>
     /// Weapon type enum
     /// </summary>
@@ -9,4 +8,3 @@
         Melee2H,
         Bow
     }
-}

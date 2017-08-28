@@ -123,6 +123,8 @@
     <Compile Include="Assets\HyperLuminal\2D Fantasy Forest Tileset\Scripts\Tile.cs" />
     <Compile Include="Assets\HyperLuminal\2D Fantasy Forest Tileset\Scripts\TimedAnimations.cs" />
     <Compile Include="Assets\HyperLuminal\2D Fantasy Forest Tileset\Scripts\Trigger.cs" />
+    <Compile Include="Assets\ItemController.cs" />
+    <Compile Include="Assets\ItemManagerController.cs" />
     <Compile Include="Assets\Materials\SpriteOutline.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleTextController.cs" />
     <Compile Include="Assets\Scripts\Battle\DamageController.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="Assets\Scripts\Game\StatusShow.cs" />
     <Compile Include="Assets\Scripts\Game\TouchController.cs" />
     <Compile Include="Assets\Scripts\Game\TrailController.cs" />
+    <Compile Include="Assets\Scripts\InventoryController.cs" />
     <Compile Include="Assets\Scripts\MonsterMovement.cs" />
     <Compile Include="Assets\Scripts\MovementController.cs" />
     <Compile Include="Assets\Scripts\Pathfinding.cs" />
@@ -161,9 +164,11 @@
     <Compile Include="Assets\Scripts\Warrior\FusdahoTrigger.cs" />
     <Compile Include="Assets\Scripts\Warrior\PowerWaveController.cs" />
     <Compile Include="Assets\Scripts\Warrior\WarriorController.cs" />
+    <Compile Include="Assets\Slot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\outline.shader" />
+    <None Include="Assets\Plugins\Android\proguard-user.txt" />
     <None Include="Assets\Scripts\test.shader" />
     <None Include="Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\Sprites\isometric\Spritesheet\landscape_sheet.xml" />

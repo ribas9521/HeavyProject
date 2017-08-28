@@ -4,8 +4,7 @@ using System.Globalization;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.FantasyHeroes.Scripts
-{
+
     /// <summary>
     /// Character presentation in editor
     /// </summary>
@@ -410,4 +409,3 @@ namespace Assets.FantasyHeroes.Scripts
         }
      
     }
-}

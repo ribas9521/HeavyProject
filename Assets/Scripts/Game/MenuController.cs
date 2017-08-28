@@ -56,10 +56,10 @@ public class MenuController : MonoBehaviour {
         statusGo = GameObject.Find("Canvas").transform.Find("Status").gameObject;
         statusGo.SetActive(false);
         playButton.SetActive(false);
-        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
+        ps = GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<PlayerStatus>();
         walkingMode = false;
         walkingModeText = otherInfo.transform.Find("Content").Find("Mode").GetComponent<Text>();
-        mc = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementController>();
+        mc = GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<MovementController>();
 
     }
 

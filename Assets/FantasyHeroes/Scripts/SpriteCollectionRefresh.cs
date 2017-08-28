@@ -3,9 +3,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.FantasyHeroes.Scripts
-{
-    /// <summary>
+ /// <summary>
     /// Refresh the main sprite collection when importing new sprite bundles
     /// </summary>
     public class SpriteCollectionRefresh : AssetPostprocessor
@@ -20,6 +18,6 @@ namespace Assets.FantasyHeroes.Scripts
             }
         }
     }
-}
+
 
 #endif

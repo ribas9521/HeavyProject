@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/PreGame.unity
     guid: cc41d1f0b18553346b9558cc3fa99380
   - enabled: 1
-    path: Assets/FantasyHeroes/Scenes/CharacterEditor.unity
+    path: Assets/_Scenes/CharacterEditor.unity
     guid: 1c1156472643cd94499227c233ebec6a
   - enabled: 1
     path: Assets/_Scenes/Scene1.unity

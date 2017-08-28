@@ -3,8 +3,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.FantasyHeroes.Scripts
-{
+
     /// <summary>
     /// Collect sprites from specified path
     /// </summary>
@@ -77,4 +76,3 @@ namespace Assets.FantasyHeroes.Scripts
 
         #endif
     }
-}

@@ -4,8 +4,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.FantasyHeroes.Scripts
-{
+
     /// <summary>
     /// Defines editor's behaviour
     /// </summary>
@@ -344,4 +343,3 @@ namespace Assets.FantasyHeroes.Scripts
             return Regex.Replace(Regex.Replace(texture.name, "[A-Z]", " $0"), "([a-z])([1-9])", "$1 $2");
         }
     }
-}

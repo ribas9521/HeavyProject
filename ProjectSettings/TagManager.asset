@@ -24,7 +24,7 @@ TagManager:
   - 
   - Invisible
   - Trail
-  - 
+  - BuyTower
   - 
   - 
   - 
@@ -70,6 +70,9 @@ TagManager:
   - name: Injured
     uniqueID: 22605957
     locked: 0
-  - name: Trail
+  - name: Canvas
     uniqueID: 2787119075
+    locked: 0
+  - name: Character
+    uniqueID: 1697478915
     locked: 0

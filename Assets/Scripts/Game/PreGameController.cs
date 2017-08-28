@@ -19,6 +19,7 @@ public class PreGameController : MonoBehaviour {
         PlayerPrefs.SetFloat("inte", 0);
         PlayerPrefs.SetFloat("dex", 0);
         PlayerPrefs.SetInt("Points", 5);
+        PlayerPrefs.SetString("walkingMode", "m");
         SceneManager.LoadScene("CharacterEditor");
     }
     public void continueGame()

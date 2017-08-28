@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.FantasyHeroes.Scripts
-{
+
     /// <summary>
     /// Contains sprite layout: rect and pivot
     /// </summary>
@@ -10,4 +9,3 @@ namespace Assets.FantasyHeroes.Scripts
         public Rect Rect;
         public Vector2 Pivot;
     }
-}

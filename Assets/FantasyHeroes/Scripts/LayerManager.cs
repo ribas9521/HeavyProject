@@ -2,8 +2,6 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.FantasyHeroes.Scripts
-{
     /// <summary>
     /// Helps to order layers (character parts)
     /// </summary>
@@ -30,4 +28,3 @@ namespace Assets.FantasyHeroes.Scripts
             Sprites = GetComponentsInChildren<SpriteLayout>(true).Select(i => i.GetComponent<SpriteRenderer>()).OrderBy(i => i.sortingOrder).ToList();
         }
     }
-}
