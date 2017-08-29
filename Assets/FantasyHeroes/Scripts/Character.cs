@@ -377,13 +377,15 @@ using UnityEngine.UI;
             ReplaceTexture(BowRenderers, Bow);
             ReplaceSprite(ShieldRenderer, Shield);
 
-            WeaponRenderer.enabled = WeaponType == WeaponType.Melee1H || WeaponType == WeaponType.Melee2H;
-            ShieldRenderer.enabled = WeaponType == WeaponType.Melee1H;
+            WeaponRenderer.enabled = true;
+            ShieldRenderer.enabled = true;
+            //WeaponRenderer.enabled = WeaponType == WeaponType.Melee1H || WeaponType == WeaponType.Melee2H;
+            //ShieldRenderer.enabled = WeaponType == WeaponType.Melee1H;
 
-            foreach (var part in BowRenderers)
-            {
-                part.enabled = WeaponType == WeaponType.Bow;
-            }
+            //foreach (var part in BowRenderers)
+            //{
+            //    part.enabled = WeaponType == WeaponType.Bow;
+            //}
         }
 
         private static void ReplaceSprite(SpriteRenderer part, Texture2D texture)

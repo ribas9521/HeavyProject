@@ -40,13 +40,13 @@ public class GameController : MonoBehaviour {
         crystalStatus = crystal.GetComponent<StatusController>();
         touchController = GetComponent<TouchController>();
         level = 1;
-        fadePanel = GameObject.FindGameObjectWithTag("Player").transform.Find("FadePanel").GetComponent<SpriteRenderer>();
+        fadePanel = GameObject.FindGameObjectsWithTag("Player")[1].transform.Find("FadePanel").GetComponent<SpriteRenderer>();
         levelInfo = canvas.transform.Find("LevelInfo").gameObject;
         goldText = levelInfo.transform.Find("Content").Find("GoldInfo").Find("GoldAmount").GetComponent<Text>();
         crystalLife = levelInfo.transform.Find("Content").Find("DefeatAttempts").Find("Attempts").GetComponent<Text>();
         charName = levelInfo.transform.Find("Content").Find("Name").Find("NameText").GetComponent<Text>();
         charName.text = PlayerPrefs.GetString("CharName");
-        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
+        ps = GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<PlayerStatus>();
 
 
     }
