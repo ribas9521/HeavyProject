@@ -34,7 +34,7 @@ public class InventoryController : MonoBehaviour
 
         fillInventory();
         equipInPlayer();
-		setItem ("I7", 8);
+		setItem ("I6", 9);
 
     }
 
