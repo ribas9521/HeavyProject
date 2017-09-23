@@ -11,10 +11,13 @@ public class InventoryController : MonoBehaviour
     GameObject itemDesc;
     GameObject from = null;
     GameObject equipButton, unequipButton;
+    public GameObject player, playerShow;
+    List<Character> chars;
 
-
-    private void Awake()
+    private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform.Find("Dummy").gameObject;
+        playerShow = transform.Find("CharacterShow").Find("DummyShow").gameObject;
         itemDesc = transform.Find("ItemDesc").gameObject;
         equipButton = itemDesc.transform.Find("EquipButton").gameObject;
         unequipButton = itemDesc.transform.Find("UnequipButton").gameObject;
@@ -25,17 +28,19 @@ public class InventoryController : MonoBehaviour
         {
             placeList.Add(t.gameObject);
         }
+        chars = new List<Character>();
+        chars.Add(player.GetComponent<Character>());
+        chars.Add(playerShow.GetComponent<Character>());
+
         fillInventory();
-        equipInPlayer();
-        //setItem("I8", 6);
+        equipInPlayer();        
     }
 
     public void equipInPlayer()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject p in players)
-        {
-            Character ch = p.transform.Find("Dummy").GetComponent<Character>();
+        GameObject[] Dummies  = GameObject.FindGameObjectsWithTag("Dummy");
+        foreach (Character ch in chars)
+        {           
             foreach (GameObject g in placeList)
             {
                 if (g.GetComponent<Slot>().type == "i")
@@ -73,6 +78,7 @@ public class InventoryController : MonoBehaviour
             }
             ch.Initialize();
         }
+        
     }
     public void fillInventory()
     {

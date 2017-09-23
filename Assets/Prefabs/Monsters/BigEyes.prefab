@@ -435,8 +435,8 @@ MonoBehaviour:
   slider: {fileID: 1594911059326046, guid: e10529d91f617794eb4749141d9cd05d, type: 2}
   isTouched: 0
   isStunned: 0
-  offsetX: 4
-  offSetY: 55
+  offsetX: 0.05
+  offSetY: 0.7
 --- !u!114 &114894019970777652
 MonoBehaviour:
   m_ObjectHideFlags: 1

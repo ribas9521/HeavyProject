@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
     Text charName;
     PlayerStatus ps;
     public GameObject candyParticles;
-    
+    GameObject crystalSpawner;
 
     void Awake () {
         canvas = GameObject.FindObjectOfType<Canvas>();        
@@ -40,13 +40,14 @@ public class GameController : MonoBehaviour {
         crystalStatus = crystal.GetComponent<StatusController>();
         touchController = GetComponent<TouchController>();
         level = 1;
-        fadePanel = GameObject.FindGameObjectsWithTag("Player")[1].transform.Find("FadePanel").GetComponent<SpriteRenderer>();
+        fadePanel = GameObject.FindGameObjectsWithTag("Player")[0].transform.Find("FadePanel").GetComponent<SpriteRenderer>();
         levelInfo = canvas.transform.Find("LevelInfo").gameObject;
         goldText = levelInfo.transform.Find("Content").Find("GoldInfo").Find("GoldAmount").GetComponent<Text>();
         crystalLife = levelInfo.transform.Find("Content").Find("DefeatAttempts").Find("Attempts").GetComponent<Text>();
         charName = levelInfo.transform.Find("Content").Find("Name").Find("NameText").GetComponent<Text>();
         charName.text = PlayerPrefs.GetString("CharName");
-        ps = GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<PlayerStatus>();
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
+        crystalSpawner = GameObject.Find("CrystalSpawner");
 
 
     }
@@ -165,7 +166,7 @@ public class GameController : MonoBehaviour {
     {
           
         canvas.transform.Find("VictoryScreen2").gameObject.SetActive(false);
-        crystal = Instantiate(CrystalPrefab, new Vector2(-6.41f, 0.192f), Quaternion.identity);
+        crystal = Instantiate(CrystalPrefab, crystalSpawner.transform.position, Quaternion.identity);
         crystalStatus = crystal.GetComponent<StatusController>();
         crystalStatus.hPoints = crystalStatus.maxHPoints;
         crystal.name = "Crystal";

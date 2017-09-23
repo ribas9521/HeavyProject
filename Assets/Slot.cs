@@ -22,7 +22,11 @@ public class Slot : MonoBehaviour {
         {
             transform.Find("Img").transform.localPosition = new Vector3(0.1f, 28.3f, 0f);
         }
-        
+        if (item.GetComponent<ItemController>().type == "Shield")
+        {
+            transform.Find("Img").transform.localPosition = new Vector3(0.1f, 26.5f, 0f);
+        }
+
     }
     
 }

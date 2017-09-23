@@ -368,7 +368,7 @@ MonoBehaviour:
   isTouched: 0
   isStunned: 0
   offsetX: 0
-  offSetY: 45
+  offSetY: 0.35
 --- !u!114 &114386926421906468
 MonoBehaviour:
   m_ObjectHideFlags: 1

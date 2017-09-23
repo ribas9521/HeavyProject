@@ -99,9 +99,7 @@ public class MonsterMovement : MonoBehaviour {
     {
         healthBar.transform.SetParent(GameObject.Find("Canvas").transform);
         healthBar.GetComponent<Slider>().value= status.hPoints;
-        Vector3 wantedPos = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 newPos = new Vector3(wantedPos.x + offsetX, wantedPos.y + offSetY, wantedPos.z);
-        healthBar.transform.position = newPos;
+        healthBar.transform.position = new Vector3(transform.position.x+ offsetX, transform.position.y+offSetY);
     }
 
     void GoTo(Transform target)

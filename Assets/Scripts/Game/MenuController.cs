@@ -35,6 +35,7 @@ public class MenuController : MonoBehaviour {
     private bool walkingMode;
     Text walkingModeText;
     MovementController mc;
+    GameObject btnManual, btnAuto;
 
 
     // Use this for initialization
@@ -56,10 +57,11 @@ public class MenuController : MonoBehaviour {
         statusGo = GameObject.Find("Canvas").transform.Find("Status").gameObject;
         statusGo.SetActive(false);
         playButton.SetActive(false);
-        ps = GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<PlayerStatus>();
-        walkingMode = false;
-        walkingModeText = otherInfo.transform.Find("Content").Find("Mode").GetComponent<Text>();
-        mc = GameObject.FindGameObjectsWithTag("Player")[1].GetComponent<MovementController>();
+        ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus>();
+        walkingMode = false;       
+        mc = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementController>();
+        btnAuto = otherInfo.transform.Find("Mode").Find("Automatic").gameObject;
+        btnManual = otherInfo.transform.Find("Mode").Find("Manual").gameObject;
 
     }
 
@@ -92,13 +94,15 @@ public class MenuController : MonoBehaviour {
         walkingMode = !walkingMode;
         if (walkingMode)
         {
-            walkingModeText.text = "Auto";
+            btnAuto.SetActive(true);
+            btnManual.SetActive(false);
             mc.setMode("a");
             
         }
         else
         {
-            walkingModeText.text = "Manu";
+            btnAuto.SetActive(false);
+            btnManual.SetActive(true);
             mc.setMode("m");
         }
     }
@@ -145,5 +149,10 @@ public class MenuController : MonoBehaviour {
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+
+    public void ToggleObject(GameObject obj)
+    {
+        obj.GetComponent<Animator>().SetTrigger("Toggle");
     }
 }

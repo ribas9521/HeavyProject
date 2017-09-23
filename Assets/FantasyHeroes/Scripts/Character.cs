@@ -228,6 +228,7 @@ using UnityEngine.UI;
                     if(t.GetHashCode() == PlayerPrefs.GetInt("Hair"))
                     {
                         Hair = t;
+                        print(PlayerPrefs.GetInt("Hair"));
                     }
                 }
                 HairRenderer.color = toColor(PlayerPrefs.GetString("HairColor"));
@@ -237,9 +238,11 @@ using UnityEngine.UI;
         private void saveHair()
         {
             if (Hair != null)
-                PlayerPrefs.SetInt("Hair", Hair.GetHashCode());
+                PlayerPrefs.SetFloat("Hair", (float)Hair.GetNativeTexturePtr());
             else
                 PlayerPrefs.SetInt("Hair", 0);
+
+           print(PlayerPrefs.GetInt("Hair"));
         }
 
         private void saveEyebrows()
@@ -409,5 +412,6 @@ using UnityEngine.UI;
                 ReplaceSprite(part, texture);
             }
         }
-     
-    }
+   
+
+}

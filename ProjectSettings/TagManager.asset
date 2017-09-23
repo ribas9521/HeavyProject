@@ -12,6 +12,7 @@ TagManager:
   - LevelChanger
   - Ground
   - Area
+  - Dummy
   layers:
   - Default
   - TransparentFX
