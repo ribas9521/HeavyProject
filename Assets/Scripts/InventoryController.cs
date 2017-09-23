@@ -33,7 +33,9 @@ public class InventoryController : MonoBehaviour
         chars.Add(playerShow.GetComponent<Character>());
 
         fillInventory();
-        equipInPlayer();        
+        equipInPlayer();
+		setItem ("I7", 8);
+
     }
 
     public void equipInPlayer()
