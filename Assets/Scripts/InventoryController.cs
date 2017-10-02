@@ -10,6 +10,7 @@ public class InventoryController : MonoBehaviour
     Transform inventoryBg;
     GameObject itemDesc;
     GameObject from = null;
+    GameObject lastSlot = null;
     GameObject equipButton, unequipButton;
     public GameObject player, playerShow;
     List<Character> chars;
@@ -270,6 +271,16 @@ public class InventoryController : MonoBehaviour
         slot.transform.Find("Img").GetComponent<Image>().color = new Color32(0, 0, 0, 0);
         PlayerPrefs.SetInt(slot.name, 0);
     }
+    public void removeEquipedItem()
+    {
+        from = null;
+        removeItem(lastSlot);
+        itemDesc.transform.Find("Title").GetComponentInChildren<Text>().text = "";
+        itemDesc.transform.Find("ItemImage").GetComponent<Image>().sprite = null;
+        itemDesc.transform.Find("ItemImage").GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        itemDesc.transform.Find("Damage").GetComponent<Text>().text = "";
+        equipInPlayer();
+    }
 
     public void unequipItem()
     {
@@ -289,9 +300,11 @@ public class InventoryController : MonoBehaviour
     {
         if (g.GetComponent<Slot>().item == null)
             return;
+        lastSlot = g;
         from = g;
         itemDesc.transform.Find("Title").GetComponentInChildren<Text>().text = g.GetComponent<Slot>().item.GetComponent<ItemController>().name;
         itemDesc.transform.Find("ItemImage").GetComponent<Image>().sprite = g.GetComponent<Slot>().item.GetComponent<ItemController>().image;
+        itemDesc.transform.Find("ItemImage").GetComponent<Image>().color = new Color(255, 255, 255, 255);
         itemDesc.transform.Find("Damage").GetComponent<Text>().text = "Damage  " + g.GetComponent<Slot>().item.GetComponent<ItemController>().iDamage.ToString() +
             " ~ " + g.GetComponent<Slot>().item.GetComponent<ItemController>().fDamage.ToString();
         if (g.GetComponent<Slot>().type == "s")
