@@ -14,9 +14,16 @@ public class InventoryController : MonoBehaviour
     GameObject equipButton, unequipButton;
     public GameObject player, playerShow;
     List<Character> chars;
+    bool usingHelmet;
+    public Texture2D helmetTexture;
+    bool hideHelmet = false;
+
+    
+    SpriteCollection sc;
 
     private void Start()
     {
+     
         player = GameObject.FindGameObjectWithTag("Player").transform.Find("Dummy").gameObject;
         playerShow = transform.Find("CharacterShow").Find("DummyShow").gameObject;
         itemDesc = transform.Find("ItemDesc").gameObject;
@@ -25,17 +32,21 @@ public class InventoryController : MonoBehaviour
         inventoryBg = transform.Find("InventoryBg");
         itemList = GameObject.Find("ItemManager").GetComponent<ItemManagerController>().itemList;
         placeList = new List<GameObject>();
+        sc = GameObject.Find("GameMananger").GetComponent<SpriteCollection>();
         foreach (Transform t in inventoryBg)
         {
             placeList.Add(t.gameObject);
         }
+        
         chars = new List<Character>();
         chars.Add(player.GetComponent<Character>());
         chars.Add(playerShow.GetComponent<Character>());
 
         fillInventory();
         equipInPlayer();
-		setItem ("I6", 9);
+        checkHelmet();
+        toggleHelmet();
+        
 
     }
 
@@ -80,6 +91,7 @@ public class InventoryController : MonoBehaviour
                 }
             }
             ch.Initialize();
+            checkHelmet();
         }
         
     }
@@ -158,7 +170,6 @@ public class InventoryController : MonoBehaviour
                 armor = g;
             if (g.name == "OffHand")
             {
-                print(g.name);
                 offHand = g;
             }
         }
@@ -319,4 +330,67 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    public void checkHelmet()
+    {
+        var helmet = placeList[0];
+        if (helmet.GetComponent<Slot>().item != null)
+        {
+            usingHelmet = true;
+            toggleHair("s");
+        }
+        else
+        {
+            usingHelmet = false;
+            toggleHair("b");
+        }        
+    }
+    
+
+    public void toggleHair(string type)
+    {
+        if (type == "b")
+        {
+            var index = sc.HairShort.FindIndex(playerhair => playerhair.name == player.GetComponent<Character>().Hair.name);
+            player.GetComponent<Character>().Hair = sc.Hair[index];
+            playerShow.GetComponent<Character>().Hair = sc.Hair[index];
+            player.GetComponent<Character>().Initialize();
+            playerShow.GetComponent<Character>().Initialize();
+           
+        }
+        else
+        {
+            var index = sc.Hair.FindIndex(playerhair => playerhair.name == player.GetComponent<Character>().Hair.name);
+            player.GetComponent<Character>().Hair = sc.HairShort[index];
+            playerShow.GetComponent<Character>().Hair = sc.HairShort[index];
+            player.GetComponent<Character>().Initialize();
+            playerShow.GetComponent<Character>().Initialize();            
+        }
+    }
+
+    
+
+    public void toggleHelmet()
+    {
+        var helmet = placeList[0];
+        if(helmet.GetComponent<Slot>().item != null)
+        {
+            print(GameObject.Find("HideHelmet").GetComponent<Toggle>().isOn);
+            if (GameObject.Find("HideHelmet").GetComponent<Toggle>().isOn)
+            {
+                helmetTexture = helmet.GetComponent<Slot>().item.GetComponent<ItemController>().textureImage;
+                helmet.GetComponent<Slot>().item.GetComponent<ItemController>().textureImage = null;
+            }
+            else
+            {
+                if (helmetTexture != null)
+                {
+                    helmet.GetComponent<Slot>().item.GetComponent<ItemController>().textureImage = helmetTexture;
+                    helmetTexture = null;
+                }
+            }
+            player.GetComponent<Character>().Initialize();
+            playerShow.GetComponent<Character>().Initialize();
+
+        }
+    }
 }
