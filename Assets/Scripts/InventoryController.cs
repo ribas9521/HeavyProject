@@ -18,12 +18,12 @@ public class InventoryController : MonoBehaviour
     public Texture2D helmetTexture;
     bool hideHelmet = false;
 
-    
+
     SpriteCollection sc;
 
     private void Start()
     {
-     
+
         player = GameObject.FindGameObjectWithTag("Player").transform.Find("Dummy").gameObject;
         playerShow = transform.Find("CharacterShow").Find("DummyShow").gameObject;
         itemDesc = transform.Find("ItemDesc").gameObject;
@@ -37,24 +37,25 @@ public class InventoryController : MonoBehaviour
         {
             placeList.Add(t.gameObject);
         }
-        
+
         chars = new List<Character>();
         chars.Add(player.GetComponent<Character>());
         chars.Add(playerShow.GetComponent<Character>());
-
+        helmetTexture = null;
         fillInventory();
         equipInPlayer();
         checkHelmet();
-        toggleHelmet();
-        
 
+        setItem("I2", 3);
+        setItem("I3", 7);
+        setItem("I4", 6);
     }
 
     public void equipInPlayer()
     {
-        GameObject[] Dummies  = GameObject.FindGameObjectsWithTag("Dummy");
+        GameObject[] Dummies = GameObject.FindGameObjectsWithTag("Dummy");
         foreach (Character ch in chars)
-        {           
+        {
             foreach (GameObject g in placeList)
             {
                 if (g.GetComponent<Slot>().type == "i")
@@ -74,6 +75,9 @@ public class InventoryController : MonoBehaviour
                         ch.Helmet = null;
                     else
                         ch.Helmet = g.GetComponent<Slot>().item.GetComponent<ItemController>().textureImage;
+                    toggleHelmet();
+                    checkHelmet();
+                    
                 }
                 if (g.name == "Armor")
                 {
@@ -93,7 +97,7 @@ public class InventoryController : MonoBehaviour
             ch.Initialize();
             checkHelmet();
         }
-        
+
     }
     public void fillInventory()
     {
@@ -233,7 +237,7 @@ public class InventoryController : MonoBehaviour
         }
         if (from.GetComponent<Slot>().item.GetComponent<ItemController>().type == "Shield")
         {
-           
+
             if (isFull(offHand))
             {
                 GameObject tempItem = offHand.GetComponent<Slot>().item;
@@ -333,18 +337,16 @@ public class InventoryController : MonoBehaviour
     public void checkHelmet()
     {
         var helmet = placeList[0];
-        if (helmet.GetComponent<Slot>().item != null)
+        if (helmet.GetComponent<Slot>().item == null || player.GetComponent<Character>().Helmet == null)
         {
-            usingHelmet = true;
-            toggleHair("s");
+            toggleHair("b");
         }
         else
         {
-            usingHelmet = false;
-            toggleHair("b");
-        }        
+            toggleHair("s");
+        }
     }
-    
+
 
     public void toggleHair(string type)
     {
@@ -353,44 +355,45 @@ public class InventoryController : MonoBehaviour
             var index = sc.HairShort.FindIndex(playerhair => playerhair.name == player.GetComponent<Character>().Hair.name);
             player.GetComponent<Character>().Hair = sc.Hair[index];
             playerShow.GetComponent<Character>().Hair = sc.Hair[index];
-            player.GetComponent<Character>().Initialize();
-            playerShow.GetComponent<Character>().Initialize();
-           
+            print("big");
         }
         else
         {
             var index = sc.Hair.FindIndex(playerhair => playerhair.name == player.GetComponent<Character>().Hair.name);
             player.GetComponent<Character>().Hair = sc.HairShort[index];
             playerShow.GetComponent<Character>().Hair = sc.HairShort[index];
-            player.GetComponent<Character>().Initialize();
-            playerShow.GetComponent<Character>().Initialize();            
+
         }
+        player.GetComponent<Character>().Initialize();
+        playerShow.GetComponent<Character>().Initialize();
     }
 
-    
+
 
     public void toggleHelmet()
     {
         var helmet = placeList[0];
-        if(helmet.GetComponent<Slot>().item != null)
+        if (helmet.GetComponent<Slot>().item != null)
         {
             print(GameObject.Find("HideHelmet").GetComponent<Toggle>().isOn);
-            if (GameObject.Find("HideHelmet").GetComponent<Toggle>().isOn)
+            if (!GameObject.Find("HideHelmet").GetComponent<Toggle>().isOn)
             {
-                helmetTexture = helmet.GetComponent<Slot>().item.GetComponent<ItemController>().textureImage;
-                helmet.GetComponent<Slot>().item.GetComponent<ItemController>().textureImage = null;
+                helmetTexture = player.GetComponent<Character>().Helmet;
+                player.GetComponent<Character>().Helmet = null;
+                playerShow.GetComponent<Character>().Helmet = null;
             }
             else
             {
                 if (helmetTexture != null)
                 {
-                    helmet.GetComponent<Slot>().item.GetComponent<ItemController>().textureImage = helmetTexture;
+                    player.GetComponent<Character>().Helmet = helmetTexture;
+                    playerShow.GetComponent<Character>().Helmet = helmetTexture;
                     helmetTexture = null;
                 }
             }
             player.GetComponent<Character>().Initialize();
             playerShow.GetComponent<Character>().Initialize();
-
+            checkHelmet();
         }
     }
 }

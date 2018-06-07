@@ -55,7 +55,7 @@ MonoBehaviour:
   name: Wolf Knight Helm
   desc: A helm used by knights
   image: {fileID: 21300000, guid: 27ef44d32ee08d34d81d421997bc22ea, type: 3}
-  textureImage: {fileID: 0}
+  textureImage: {fileID: 2800000, guid: 27ef44d32ee08d34d81d421997bc22ea, type: 3}
   type: Helmet
   iDamage: 1
   fDamage: 2
